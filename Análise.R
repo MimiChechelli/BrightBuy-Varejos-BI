@@ -48,20 +48,44 @@ lucro_por_semana <- dados %>%
   group_by(Semana) %>%
   summarise(Total= sum(lucro))
 
-# Total vendas por filial adc por mes
+# Total vendas por filial
 monetario_por_filial <- dados %>%
   group_by(filial_venda) %>%
+  summarise(Total= sum(valor_monetario_total))
+
+monetario_por_filial_mes <- dados %>%
+  group_by(filial_venda, Mes) %>%
+  summarise(Total= sum(valor_monetario_total))
+
+monetario_por_filial_semana <- dados %>%
+  group_by(filial_venda, Semana) %>%
   summarise(Total= sum(valor_monetario_total))
 
 produtos_por_filial <- dados %>%
   group_by(filial_venda) %>%
   summarise(Total= sum(quantidade))
 
+produtos_por_filial_mes <- dados %>%
+  group_by(filial_venda, Mes) %>%
+  summarise(Total= sum(quantidade))
+
+produtos_por_filial_semana <- dados %>%
+  group_by(filial_venda, Semana) %>%
+  summarise(Total= sum(quantidade))
+
 lucro_por_filial <- dados %>%
   group_by(filial_venda) %>%
   summarise(Total= sum(lucro))
 
-# Total vendas por vendedor adc por mes
+lucro_por_filial_mes <- dados %>%
+  group_by(filial_venda, Mes) %>%
+  summarise(Total= sum(lucro))
+
+lucro_por_filial_semana <- dados %>%
+  group_by(filial_venda, Semana) %>%
+  summarise(Total= sum(lucro))
+
+# Total vendas por vendedor
 monetario_por_vendedor <- dados %>%
   group_by(codigo_vendedor) %>%
   summarise(Total= sum(valor_monetario_total))
@@ -74,7 +98,31 @@ lucro_por_vendedor <- dados %>%
   group_by(codigo_vendedor) %>%
   summarise(Total= sum(lucro))
 
-# Total vendas por familia de produtos adc por mes
+monetario_por_vendedor_mes <- dados %>%
+  group_by(codigo_vendedor, Mes) %>%
+  summarise(Total= sum(valor_monetario_total))
+
+produtos_por_vendedor_mes <- dados %>%
+  group_by(codigo_vendedor, Mes) %>%
+  summarise(Total= sum(quantidade))
+
+lucro_por_vendedor_mes <- dados %>%
+  group_by(codigo_vendedor, Mes) %>%
+  summarise(Total= sum(lucro))
+
+monetario_por_vendedor_semana <- dados %>%
+  group_by(codigo_vendedor, Semana) %>%
+  summarise(Total= sum(valor_monetario_total))
+
+produtos_por_vendedor_semana <- dados %>%
+  group_by(codigo_vendedor, Semana) %>%
+  summarise(Total= sum(quantidade))
+
+lucro_por_vendedor_semana <- dados %>%
+  group_by(codigo_vendedor, Semana) %>%
+  summarise(Total= sum(lucro))
+
+# Total vendas por familia de produtos
 monetario_por_fam_produto <- dados %>%
   group_by(codigo_familia) %>%
   summarise(Total= sum(valor_monetario_total))
@@ -87,8 +135,33 @@ lucro_por_fam_produto <- dados %>%
   group_by(codigo_familia) %>%
   summarise(Total= sum(lucro))
 
+  monetario_por_fam_produto_mes <- dados %>%
+  group_by(codigo_familia, Mes) %>%
+  summarise(Total= sum(valor_monetario_total))
 
+produtos_por_fam_produto_mes <- dados %>%
+  group_by(codigo_familia, Mes) %>%
+  summarise(Total= sum(quantidade))
 
+lucro_por_fam_produto_mes <- dados %>%
+  group_by(codigo_familia, Mes) %>%
+  summarise(Total= sum(lucro))
+
+monetario_por_fam_produto_semana <- dados %>%
+  group_by(codigo_familia, Semana) %>%
+  summarise(Total= sum(valor_monetario_total))
+
+produtos_por_fam_produto_semana <- dados %>%
+  group_by(codigo_familia, Semana) %>%
+  summarise(Total= sum(quantidade))
+
+lucro_por_fam_produto_semana <- dados %>%
+  group_by(codigo_familia, Semana) %>%
+  summarise(Total= sum(lucro))
+
+  
+#IV. Calculo do ticket médio por filial, Churn Rate por vendedor/filial/geral, Lifetime Value (LTV) dos 
+#Cliente individualmente e em média, Taxa de Recorrência e Margens de Lucro.
 
 
 
@@ -104,9 +177,6 @@ II. Indicação de cinco (5) famílias de produtos para focar nas campanhas de m
 apartir do histórico e tendencias de fim de ano.
 
 III. Avaliação de desempenho de vendedores apartir da analise do número de produtos vendidos, 
-número de clientes, ticket médio e receita e lucro gerada. 5 melhores vendedores do ano, com paração 
-grafica geral e tratativa para melhorar as vendas dos vendedores com desempenho abaixo da média.
-
-IV. Calculo do ticket médio por filial, Churn Rate por vendedor/filial/geral, Lifetime Value (LTV) dos 
-Cliente individualmente e em média, Taxa de Recorrência e Margens de Lucro.'''
+número de clientes, ticket médio e receita e lucro gerada. 5 melhores vendedores do ano, comparação 
+grafica geral e tratativa para melhorar as vendas dos vendedores com desempenho abaixo da média.'''
 
