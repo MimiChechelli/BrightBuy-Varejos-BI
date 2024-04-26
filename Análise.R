@@ -189,27 +189,63 @@ for (i in seq_along(ticket_medio_semanal_geral$Semana)) {
   ticket_medio_semanal_geral$Ticket[i] <- valor_monetario / nrow(dados_semana_x)
 }
 
-# Calculo do ticket médio por filial anual/mensal/semanal
+# Para calcular o ticket médio anual por filial
+ticket_medio_anual_por_filial <- dados %>%
+  group_by(filial_venda) %>%
+  summarize(ticket_medio = mean(valor_monetario_total))
 
-# Calculo do ticket médio por vendedor anual/mensal/semanal
+# Para calcular o ticket médio mensal por filial
+ticket_medio_mensal_por_filial <- dados %>%
+  group_by(filial_venda, Mes) %>%
+  summarize(ticket_medio = mean(valor_monetario_total))
 
-# Churn Rate por vendedor/filial/geral
+# Para calcular o ticket médio semanal por filial
+ticket_medio_semanal_por_filial <- dados %>%
+  group_by(filial_venda, Semana) %>%
+  summarize(ticket_medio = mean(valor_monetario_total))
 
-# Lifetime Value (LTV) dos Cliente individualmente e em média
+# Para calcular o ticket médio anual por vendedor
+ticket_medio_anual_por_vendedor <- dados %>%
+  group_by(nome_vendedor) %>%
+  summarize(ticket_medio = mean(valor_monetario_total))
 
-# Taxa de Recorrência vendedor/filial/geral
+# Para calcular o ticket médio mensal por vendedor
+ticket_medio_mensal_por_vendedor <- dados %>%
+  group_by(nome_vendedor, Mes) %>%
+  summarize(ticket_medio = mean(valor_monetario_total))
 
-# Margens de Lucro.vendedor/filial/geral
+# Para calcular o ticket médio semanal por vendedor
+ticket_medio_semanal_por_vendedor <- dados %>%
+  group_by(nome_vendedor, Semana) %>%
+  summarize(ticket_medio = mean(valor_monetario_total))
 
+# Margens de margem de lucro geral
+margem_de_lucro_geral <- dados %>%
+  filter(!is.na(lucro) & !is.na(valor_monetario_total) & valor_monetario_total != 0) %>%
+  summarize(margem_lucro = mean(lucro / valor_monetario_total) * 100)
 
+# Calcular as margens de lucro por filial
+margens_de_lucro_por_filial <- dados %>%
+  filter(!is.na(lucro) & !is.na(valor_monetario_total) & valor_monetario_total != 0) %>%
+  group_by(filial_venda) %>%
+  summarize(margem_lucro = mean(lucro / valor_monetario_total) * 100)
 
+# Calcular as margens de lucro por vendedor
+margens_de_lucro_por_vendedor <- dados %>%
+  filter(!is.na(lucro) & !is.na(valor_monetario_total) & valor_monetario_total != 0) %>%
+  group_by(nome_vendedor) %>%
+  summarize(margem_lucro = mean(lucro / valor_monetario_total) * 100)
 
+# Calcular o LTV dos Clientes Individualmente
+lifetime_Value_individual <- dados %>%
+  group_by(codigo_cliente) %>%
+  summarise(ltv = sum(valor_monetario_total))
 
+# Calcular o LTV Médio dos Clientes
+lifetime_Value_medio <- mean(ltv_individual$ltv)
 
+# Número de compras por cliente
+numero_de_compras <- dados %>%
+  group_by(codigo_cliente) %>%
+  summarise(numero_de_compras = n())
 
-
-
-
-'''Avaliação de desempenho de vendedores apartir da analise do número de produtos vendidos, 
-número de clientes, ticket médio e receita e lucro gerada. 5 melhores vendedores do ano, comparação 
-grafica geral e tratativa para melhorar as vendas dos vendedores com desempenho abaixo da média.'''
