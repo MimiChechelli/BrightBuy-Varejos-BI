@@ -17,11 +17,11 @@ II. Indicação de cinco (5) famílias de produtos para focar nas campanhas de m
 
 III. Avaliação de desempenho de vendedores apartir da analise do número de produtos vendidos, número de clientes, ticket médio e receita e lucro gerada. 5 melhores vendedores do ano, com paração grafica geral e tratativa para melhorar as vendas dos vendedores com desempenho abaixo da média.
 
-IV. Calculo do ticket médio por vendedor/filial/geral, numero de compras de cada cliente e Margens de Lucro.
+IV. Calculo do ticket médio por filial, Churn Rate por vendedor/filial/geral, Lifetime Value (LTV) dos Cliente individualmente e em média, Taxa de Recorrência e Margens de Lucro.
 **********************************************************************************************************************
 
 E-mail: michiluvison@gmail.com
 LinkedIn: https://www.linkedin.com/in/michelli-luvison-623649268/
 Portfolio: https://sites.google.com/view/michelli-luvison/p%C3%A1gina-inicial
 
-Última atualização: Abril de 2024
+Última atualização: Março de 2024
